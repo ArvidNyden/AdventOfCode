@@ -1,6 +1,4 @@
-using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Diagnostics;
 using System.Text;
 using System.Linq;
 
@@ -14,9 +12,9 @@ namespace AdventOfCode
         {
             var input = "reyedfim";
             var code = "";
-            for (int i = 0; code.Length <= 8; i++)
+            for (var i = 0; code.Length <= 8; i++)
             {
-                var hash = CalculateMD5Hash(input + i);
+                var hash = CalculateMd5Hash(input + i);
 
                 if (hash.StartsWith("00000"))
                     code += hash.Substring(5, 1);
@@ -25,11 +23,11 @@ namespace AdventOfCode
         [TestMethod]
         public void Part2()
         {
-            var input = "reyedfim";
-            String[] code = new String[8];
-            for (int i = 0; code.Length <= 8; i++)
+            const string input = "reyedfim";
+            var code = new string[8];
+            for (var i = 0; code.Length <= 8; i++)
             {
-                var hash = CalculateMD5Hash(input + i);
+                var hash = CalculateMd5Hash(input + i);
 
                 if (!hash.StartsWith("00000"))
                     continue;
@@ -46,27 +44,24 @@ namespace AdventOfCode
             }
         }
 
-        public string CalculateMD5Hash(string input)
+        public string CalculateMd5Hash(string input)
 
         {
             // step 1, calculate MD5 hash from input
 
             var md5 = System.Security.Cryptography.MD5.Create();
 
-            byte[] inputBytes = System.Text.Encoding.ASCII.GetBytes(input);
+            var inputBytes = Encoding.ASCII.GetBytes(input);
 
-            byte[] hash = md5.ComputeHash(inputBytes);
+            var hash = md5.ComputeHash(inputBytes);
 
             // step 2, convert byte array to hex string
 
-            StringBuilder sb = new StringBuilder();
+            var sb = new StringBuilder();
 
-            for (int i = 0; i < hash.Length; i++)
-
+            foreach (var t in hash)
             {
-
-                sb.Append(hash[i].ToString("X2"));
-
+                sb.Append(t.ToString("X2"));
             }
 
             return sb.ToString();

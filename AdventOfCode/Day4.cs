@@ -1,15 +1,11 @@
 using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Diagnostics;
-using System.Text;
-using System.Linq;
 
 namespace AdventOfCode
 {
     [TestClass]
     public class Day4
     {
-
         [TestMethod]
         public void Part2()
         {
@@ -39,7 +35,7 @@ namespace AdventOfCode
         }
         public char MoveForward(char str)
         {
-            char letter = str;
+            var letter = str;
 
             if (letter == 'z')
                 return 'a';

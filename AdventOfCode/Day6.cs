@@ -1,4 +1,3 @@
-using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Linq;
 
@@ -10,9 +9,9 @@ namespace AdventOfCode
         [TestMethod]
         public void Part1()
         {
-            string[] lines = System.IO.File.ReadAllLines("input/day5.txt");
+            var lines = System.IO.File.ReadAllLines("input/day5.txt");
             var code = "";
-            for (int i = 0; i < lines.First().Length; i++)
+            for (var i = 0; i < lines.First().Length; i++)
                 code += lines .Select(s => s[i]).GroupBy(x => x).OrderByDescending(x => x.Count()).First().Key;
 
             Assert.IsNotNull(code);
@@ -20,9 +19,9 @@ namespace AdventOfCode
         [TestMethod]
         public void Part2()
         {
-            string[] lines = System.IO.File.ReadAllLines("input/day5.txt");
+            var lines = System.IO.File.ReadAllLines("input/day5.txt");
             var code = "";
-            for (int i = 0; i < lines.First().Length; i++)
+            for (var i = 0; i < lines.First().Length; i++)
                 code += lines.Select(s => s[i]).GroupBy(x => x).OrderBy(x => x.Count()).First().Key;
 
             Assert.IsNotNull(code);

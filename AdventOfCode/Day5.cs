@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.Text;
 using System.Linq;
 
-namespace UnitTestProject1
+namespace AdventOfCode
 {
     [TestClass]
     public class UnitTest1
@@ -14,8 +14,7 @@ namespace UnitTestProject1
         {
             var input = "reyedfim";
             var code = "";
-            var md5 = System.Security.Cryptography.MD5.Create();
-            for (int i = 0;code.Length <= 8;i++)
+            for (int i = 0; code.Length <= 8; i++)
             {
                 var hash = CalculateMD5Hash(input + i);
 
@@ -28,76 +27,25 @@ namespace UnitTestProject1
         {
             var input = "reyedfim";
             String[] code = new String[8];
-            var md5 = System.Security.Cryptography.MD5.Create();
             for (int i = 0; code.Length <= 8; i++)
             {
                 var hash = CalculateMD5Hash(input + i);
 
-                if (hash.StartsWith("00000"))
-                {
-                    var position = hash.Substring(5, 1);
-                    var c = hash.Substring(6, 1);
-                    if (int.TryParse(position, out var resPos))
-                    {
-                        if (resPos < 8 && code[resPos] == null)
-                            code[resPos] = c;
-                    }
-                    if (!code.Contains(null))
-                    {
-                        Console.WriteLine("Success: " + code);
-                    }
-                }
+                if (!hash.StartsWith("00000"))
+                    continue;
+
+                var position = hash.Substring(5, 1);
+                var c = hash.Substring(6, 1);
+
+                if (int.TryParse(position, out var resPos))
+                    if (resPos < 8 && code[resPos] == null)
+                        code[resPos] = c;
+
+                if (!code.Contains(null))
+                    Assert.IsNotNull(code); // Done
             }
         }
 
-        [TestMethod]
-        public void TestMethodDay4()
-        {
-
-            string[] lines = System.IO.File.ReadAllLines("day4.txt");
-
-            foreach(var line in lines)
-            {
-                var intCode = Int32.Parse(line.Substring(line.Length - 10, 3));
-
-                var test = line.Substring(0, line.Length - 11);
-
-                var result = "";
-                foreach (var t in test.ToCharArray())
-                {
-                    if (t == '-')
-                    {
-                        result += " ";
-                        continue;
-                    }
-                    var newStr = t;
-                    for (var i = 0; i < intCode; i++)
-                    {
-                        newStr = MoveForward(newStr);
-                    }
-
-                    result += newStr.ToString();
-                }
-
-                if (result.Contains("nort") || result.Contains("pole"))
-                {
-                    Console.WriteLine($"{result} {intCode}");
-                }
-            }
-
-            Assert.AreEqual(MoveForward('b'), 'c');
-            Assert.AreEqual(MoveForward('z'), 'a');
-        }
-
-        public char MoveForward(char str)
-        {
-            char letter = str;
-
-            if (letter == 'z')
-                return 'a';
-            else
-                return (char)(letter + 1);
-        }
         public string CalculateMD5Hash(string input)
 
         {
@@ -125,5 +73,5 @@ namespace UnitTestProject1
 
         }
     }
-    
+
 }

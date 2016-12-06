@@ -57,10 +57,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="Powershell\1.ps1" />
-    <None Include="Powershell\2.ps1" />
-    <None Include="Powershell\3.ps1" />
-    <None Include="Powershell\4.ps1" />
+    <None Include="Powershell Day 1-4\1.ps1" />
+    <None Include="Powershell Day 1-4\2.ps1" />
+    <None Include="Powershell Day 1-4\3.ps1" />
+    <None Include="Powershell Day 1-4\4.ps1" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="input\day4.txt">
@@ -69,7 +69,7 @@
     <Content Include="input\day5.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Powershell\input-4.txt" />
+    <Content Include="Powershell Day 1-4\input-4.txt" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

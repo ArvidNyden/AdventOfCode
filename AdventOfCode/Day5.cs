@@ -7,10 +7,10 @@ using System.Linq;
 namespace AdventOfCode
 {
     [TestClass]
-    public class UnitTest1
+    public class Day5
     {
         [TestMethod]
-        public void TestMethodDay5()
+        public void Part1()
         {
             var input = "reyedfim";
             var code = "";
@@ -23,7 +23,7 @@ namespace AdventOfCode
             }
         }
         [TestMethod]
-        public void TestMethodDay5_2()
+        public void Part2()
         {
             var input = "reyedfim";
             String[] code = new String[8];
